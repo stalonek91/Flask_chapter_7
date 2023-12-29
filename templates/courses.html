@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses</title>
+  </head>
+  <body>
+    <h1>Add a course to DB</h1>
+    <form action="/add_course" method="POST">
+      <label for="course_name">Course Name:</label><br />
+      <input type="text" id="course_name" name="course_name" /><br /><br />
+      <input type="submit" value="Add Course" />
+    </form>
+    <h2>Current Courses</h2>
+    <ul>
+      {% for item in courses %}
+      <li>Course name: {{item.name}}</li>
+      {% endfor %}
+    </ul>
+
+    <h2>Course -> Member ID mapping</h2>
+    <ul>
+      {% for item in table_mapping %}
+      <li>MemberID: {{item.member_id}}</li>
+      <li>Course ID: {{item.course_id}}</li>
+      <br />
+      {% endfor %}
+    </ul>
+
+    <br />
+    <a href="/users">Go to Users</a>
+    <br />
+    <a href="/orders">Go to Orders</a>
+    <br />
+    <a href="/">Go back to Home</a>
+  </body>
+</html>

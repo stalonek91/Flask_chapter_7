@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orders</title>
+  </head>
+  <body>
+    <h1>Create an Order</h1>
+
+    <form action="/add_order" method="POST">
+      <label for="user_id">Select User:</label>
+      <select id="user_id" name="user_id">
+        {% for member in users %}
+        <option value="{{ member.id }}">{{ member.username }}</option>
+        {% endfor %}</select
+      ><br />
+
+      <label for="price">Order Price:</label>
+      <input type="text" id="price" name="price" /><br />
+
+      <input type="submit" value="Add Order" />
+    </form>
+
+    <h2>Current Orders</h2>
+    <ul>
+      {% for order in orders %}
+      <li>User ID: {{ order.member_id }} - Price: {{ order.price }}</li>
+      {% endfor %}
+    </ul>
+    <br />
+    <a href="/users">Go to Users</a>
+    <br />
+    <a href="/">Go back to Home</a>
+  </body>
+</html>

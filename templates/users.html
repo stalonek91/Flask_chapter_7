@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users in Database.</title>
+  </head>
+  <body>
+    <h1>User Database. Current users number: {{user_count}}</h1>
+    <ul>
+      {% for user in users %}
+      <li>{{ user.username }} - {{ user.email }}</li>
+      {% endfor %}
+    </ul>
+    <br />
+
+    <h1>Not completed users!!</h1>
+    <ul>
+      {% for user in not_complete_users %}
+      <li>
+        {{ user.username }} - {{ user.email }} - {{ user.password }}-
+        {{user.join_date }}
+      </li>
+      {% endfor %}
+    </ul>
+    <br />
+    <h2>Delete User</h2>
+    <form action="/delete_user" method="POST">
+      <label for="delete_username">Select username to delete: </label><br />
+      <select id="delete_username" name="delete_username">
+        {% for user in users %}
+        <option value="{{user.username}}">{{ user.username}}</option>
+        {% endfor %}
+      </select>
+      <br />
+      <input type="submit" value="Delete User" />
+    </form>
+
+    <br />
+    <a href="/orders">Go to Orders</a>
+    <br />
+    <a href="/courses">Go to Courses</a>
+    <br />
+    <a href="/">Go back to Home</a>
+  </body>
+</html>
